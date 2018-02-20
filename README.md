@@ -19,7 +19,7 @@ query{
 
 ```
 
-and hit the play button (cmd-return), then you should get this on the right side should show some sample data served from GraphQL Server which aggregates data from SQL, MongoDB and REST API.
+and hit the play button (cmd-return), then you should get response on the right side, showing some sample data served from GraphQL Server which aggregates data from SQL, MongoDB and REST API.
 
 ## Getting started
 
