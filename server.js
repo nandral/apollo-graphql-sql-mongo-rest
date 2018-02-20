@@ -7,7 +7,7 @@ import bodyParser from "body-parser";
 import schema from "./data/schema";
 import { Engine } from "apollo-engine";
 
-const GRAPHQL_PORT = 3000;
+const GRAPHQL_PORT = process.env.PORT || 3000;
 const ENGINE_API_KEY = "service:nandral_apollo_engine_1:_ZKV_ICGYUQj_hkrkr4OkA";
 
 const graphQLServer = express();
