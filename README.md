@@ -2,10 +2,8 @@
 
 GraphQL server that connects to multiple backends: a SQL database, a MongoDB database and a REST endpoint. 
 
-# Demo
-### https://apollo-graphql-sql-mongo-rest.herokuapp.com/graphiql
-
-##### https://graphql-sql-mongo-rest-nandral.c9users.io/graphiql  ( sometimes C9 ide shuts down if not accessed for few days )
+## Demo
+#### https://apollo-graphql-sql-mongo-rest.herokuapp.com/graphiql
 
 When you paste below GraphQL query on the left side of the page:
 
