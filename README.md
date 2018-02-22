@@ -5,6 +5,9 @@ GraphQL server that connects to multiple backends: a SQL database, a MongoDB dat
 ## Demo
 #### https://apollo-graphql-sql-mongo-rest.herokuapp.com/graphiql
 
+<a href="http://example.com/" target="_blank">Hello, world!</a>
+
+
 When you paste below GraphQL query on the left side of the page:
 
 ```
