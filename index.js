@@ -1,11 +1,11 @@
-import "babel-polyfill";
+// const "babel-polyfill";
 
-import compression from "compression";
-import express from "express";
-import { graphqlExpress, graphiqlExpress } from "apollo-server-express";
-import bodyParser from "body-parser";
-import schema from "./data/schema";
-import { Engine } from "apollo-engine";
+const compression = require("compression");
+const express = require("express");
+const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
+const bodyParser = require("body-parser");
+const schema = require("./src/schema");
+const { Engine } = require("apollo-engine");
 
 const GRAPHQL_PORT = process.env.PORT || 3000;
 const ENGINE_API_KEY = "service:nandral_apollo_engine_1:_ZKV_ICGYUQj_hkrkr4OkA";
@@ -52,3 +52,5 @@ graphQLServer.listen(GRAPHQL_PORT, () =>
     `GraphiQL is now running on http://localhost:${GRAPHQL_PORT}/graphiql`
   )
 );
+
+module.exports = graphQLServer;

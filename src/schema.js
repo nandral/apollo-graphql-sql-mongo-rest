@@ -1,8 +1,12 @@
-import { makeExecutableSchema } from "graphql-tools";
-// import mocks from "./mocks";
-import resolvers from "./resolvers";
+const { makeExecutableSchema } = require("graphql-tools");
+const resolvers = require("./resolvers");
 
 const typeDefs = `
+    schema {
+      query: Query
+      mutation: Mutation
+    }
+
     type Query {
       author(firstName: String, lastName: String): Author
       allAuthors: [Author]
@@ -23,8 +27,14 @@ const typeDefs = `
       views: Int
       author: Author
     }   
+
+    type Mutation{
+      createAuthor(firstName:String! lastName:String!): Author!
+    }
+  
 `;
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
-export default schema;
+// export default schema;
+module.exports = schema;

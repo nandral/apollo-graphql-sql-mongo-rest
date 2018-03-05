@@ -1,8 +1,8 @@
-import Sequelize from "sequelize";
-import casual from "casual";
-import _ from "lodash";
-import Mongoose from "mongoose";
-import fetch from "node-fetch";
+const Sequelize = require("sequelize");
+const casual = require("casual");
+const _ = require("lodash");
+const Mongoose = require("mongoose");
+const fetch = require("node-fetch");
 
 const MLAB_URL = "mongodb://gql:gql@ds211588.mlab.com:11588/gql";
 
@@ -40,35 +40,38 @@ const Post = db.models.post;
 const View = Mongoose.model("views", ViewSchema);
 
 casual.seed(123);
+
 db.sync({ force: true }).then(() => {
-  _.times(10, () => {
-    return AuthorModel.create({
+  _.times(1, async () => {
+    const author = await AuthorModel.create({
       firstName: casual.first_name,
       lastName: casual.last_name
-    }).then(author => {
-      return author
-        .createPost({
-          title: `A post by ${author.firstName}`,
-          text: casual.sentences(3)
-        })
-        .then(post => {
-          return View.update(
-            { postId: post.id },
-            { views: casual.integer(0, 100) },
-            { upsert: true }
-          );
-        });
     });
+
+    const post = await author.createPost({
+      title: `A post by ${author.firstName}`,
+      text: casual.sentences(3)
+    });
+
+    await View.update(
+      { postId: post.id },
+      { views: casual.integer(0, 100) },
+      { upsert: true }
+    );
+
+    return author;
   });
 });
+
 const FortuneCookie = {
-  getOne() {
-    return fetch("http://fortunecookieapi.herokuapp.com/v1/cookie")
-      .then(res => res.json())
-      .then(res => {
-        return res[0].fortune.message;
-      });
+  async getOne() {
+    let res = await fetch("http://fortunecookieapi.herokuapp.com/v1/cookie");
+    res = await res.json();
+    // console.log("======== ***********  ======");
+    // console.log(res[0].fortune.message);
+    // console.log("======== ***********  ======");
+    return res[0].fortune.message;
   }
 };
 
-export { Author, Post, View, FortuneCookie };
+module.exports = { Author, Post, View, FortuneCookie };
