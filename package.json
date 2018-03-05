@@ -26,8 +26,8 @@
     "supertest": "^3.0.0"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon --watch . index.js",
+    "start": "PORT=5000 node index.js",
+    "dev": "PORT=5000 nodemon --watch . index.js",
     "test": "mocha 'test/**/*.test.js' --exit"
   }
 }
